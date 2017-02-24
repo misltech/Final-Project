@@ -12,14 +12,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using System.Threading.Tasks;
 namespace Pi_Quartos
 {
     public sealed partial class MainPage : Page
     {
         Sensor sensor1 = new Sensor(5);
         LED led1 = new LED(6);
-       
+        DispatcherTimer _timer;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -27,15 +28,21 @@ namespace Pi_Quartos
             if (sensor1.active())
             {
                 sensor1.Start();
-            }
 
+                _timer.Interval = TimeSpan.FromMinutes(1);
+                _timer.Tick += count;
+
+            }
+        }
+           
+        }
             //qmrservice.qmrserviceSoapClient client = new qmrservice.qmrserviceSoapClient();
 
             //client.AddRoomAsync("testroom");
 
             //qmrservice.GetListRoomsResponse g = await client.GetListRoomsAsync();
             //Motion();
-            Test();
+            
         }
 
         private async void Test()
