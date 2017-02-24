@@ -92,7 +92,7 @@ namespace Pi_Quartos
         {
             _counting = 1;
 
-            while (_counting != 0)
+            if (_counting != 0)
             {
                 _counting++;
             }
