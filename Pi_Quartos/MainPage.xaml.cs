@@ -29,13 +29,9 @@ namespace Pi_Quartos
             {
                 sensor1.Start();
 
-                _timer.Interval = TimeSpan.FromMinutes(1);
-                _timer.Tick += count;
-
             }
         }
-           
-        }
+    }
             //qmrservice.qmrserviceSoapClient client = new qmrservice.qmrserviceSoapClient();
 
             //client.AddRoomAsync("testroom");
@@ -45,14 +41,16 @@ namespace Pi_Quartos
             
         }
 
-        private async void Test()
-        {
-            qmrservice.qmrserviceSoapClient client = new qmrservice.qmrserviceSoapClient();
+private async void Test()
+{
+    qmrservice.qmrserviceSoapClient client = new qmrservice.qmrserviceSoapClient();
 
-            qmrservice.GetListRoomsResponse g = await client.GetListRoomsAsync();
+    qmrservice.GetListRoomsResponse g = await client.GetListRoomsAsync();
+}
 
-            
-        }
+    
+
+
         //public void Motion()
         //{
 
@@ -65,5 +63,26 @@ namespace Pi_Quartos
         //        led1.Led_Off();
         //}
  
-    }
-}
+    
+
+
+
+/*#######################################################################################################################################################
+
+
+
+
+
+    if room is reserved #checks database
+
+   if no motion is detected => start countdwn
+
+    if motion is detected => end countdwn
+
+#This checks whether someone enters the room when its reserved
+#add countdown timer (10mins) , then unreserve room.
+
+find a way to stop timer if it reaches 10mins => unreserve room.
+
+
+   ###################################### */
