@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="Pi_Quartos.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Pi_Quartos"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image x:Name="image" HorizontalAlignment="Center" Height="278" Margin="0,184,0,0" VerticalAlignment="Top" Width="591" Source="Assets/Guttman_LOGO_Full_Horizontal_Blue.jpg" />
+        <RelativePanel HorizontalAlignment="Center" Height="510" VerticalAlignment="Top" Width="1920" Background="#FF0082C8" Margin="0,570,0,0">
+            <RelativePanel HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0"/>
+        </RelativePanel>
+    </Grid>
+</Page>

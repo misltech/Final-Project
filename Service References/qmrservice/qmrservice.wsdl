@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetRoomByRoomID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="value" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomByRoomIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomByRoomIDResult" type="tns:Room" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Room">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RoomID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Occupied" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomBySensorID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="value" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomBySensorIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomBySensorIDResult" type="tns:Room" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListRooms">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetListRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListRoomsResult" type="tns:ArrayOfRoom" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRoom">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="tns:Room" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roomName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRoomResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddSensor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="roomID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ipaddr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSensorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReserveRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="roomID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="occupied" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReserveRoomResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReserveRoomBySensor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sensorID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="roomID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="occupied" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReserveRoomBySensorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRoomByRoomIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomByRoomID" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomByRoomIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomByRoomIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomBySensorIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomBySensorID" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomBySensorIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomBySensorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListRooms" />
+  </wsdl:message>
+  <wsdl:message name="GetListRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRoom" />
+  </wsdl:message>
+  <wsdl:message name="AddRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSensorSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSensor" />
+  </wsdl:message>
+  <wsdl:message name="AddSensorSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReserveRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:ReserveRoom" />
+  </wsdl:message>
+  <wsdl:message name="ReserveRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:ReserveRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReserveRoomBySensorSoapIn">
+    <wsdl:part name="parameters" element="tns:ReserveRoomBySensor" />
+  </wsdl:message>
+  <wsdl:message name="ReserveRoomBySensorSoapOut">
+    <wsdl:part name="parameters" element="tns:ReserveRoomBySensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:portType name="qmrserviceSoap">
+    <wsdl:operation name="GetRoomByRoomID">
+      <wsdl:input message="tns:GetRoomByRoomIDSoapIn" />
+      <wsdl:output message="tns:GetRoomByRoomIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomBySensorID">
+      <wsdl:input message="tns:GetRoomBySensorIDSoapIn" />
+      <wsdl:output message="tns:GetRoomBySensorIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListRooms">
+      <wsdl:input message="tns:GetListRoomsSoapIn" />
+      <wsdl:output message="tns:GetListRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRoom">
+      <wsdl:input message="tns:AddRoomSoapIn" />
+      <wsdl:output message="tns:AddRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSensor">
+      <wsdl:input message="tns:AddSensorSoapIn" />
+      <wsdl:output message="tns:AddSensorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoom">
+      <wsdl:input message="tns:ReserveRoomSoapIn" />
+      <wsdl:output message="tns:ReserveRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoomBySensor">
+      <wsdl:input message="tns:ReserveRoomBySensorSoapIn" />
+      <wsdl:output message="tns:ReserveRoomBySensorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="qmrserviceSoap" type="tns:qmrserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRoomByRoomID">
+      <soap:operation soapAction="http://tempuri.org/GetRoomByRoomID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomBySensorID">
+      <soap:operation soapAction="http://tempuri.org/GetRoomBySensorID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListRooms">
+      <soap:operation soapAction="http://tempuri.org/GetListRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoom">
+      <soap:operation soapAction="http://tempuri.org/AddRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSensor">
+      <soap:operation soapAction="http://tempuri.org/AddSensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoom">
+      <soap:operation soapAction="http://tempuri.org/ReserveRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoomBySensor">
+      <soap:operation soapAction="http://tempuri.org/ReserveRoomBySensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="qmrserviceSoap12" type="tns:qmrserviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRoomByRoomID">
+      <soap12:operation soapAction="http://tempuri.org/GetRoomByRoomID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomBySensorID">
+      <soap12:operation soapAction="http://tempuri.org/GetRoomBySensorID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListRooms">
+      <soap12:operation soapAction="http://tempuri.org/GetListRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoom">
+      <soap12:operation soapAction="http://tempuri.org/AddRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSensor">
+      <soap12:operation soapAction="http://tempuri.org/AddSensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoom">
+      <soap12:operation soapAction="http://tempuri.org/ReserveRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoomBySensor">
+      <soap12:operation soapAction="http://tempuri.org/ReserveRoomBySensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="qmrservice">
+    <wsdl:port name="qmrserviceSoap" binding="tns:qmrserviceSoap">
+      <soap:address location="https://qmr.guttman.cuny.edu/qmr/qmrservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="qmrserviceSoap12" binding="tns:qmrserviceSoap12">
+      <soap12:address location="https://qmr.guttman.cuny.edu/qmr/qmrservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

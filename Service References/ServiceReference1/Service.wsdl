@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRooms_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:BootstrapPolicy>
+                  <wsp:Policy>
+                    <sp:SignedParts>
+                      <sp:Body />
+                      <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    </sp:SignedParts>
+                    <sp:EncryptedParts>
+                      <sp:Body />
+                    </sp:EncryptedParts>
+                    <sp:TransportBinding>
+                      <wsp:Policy>
+                        <sp:TransportToken>
+                          <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false" />
+                          </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                          <wsp:Policy>
+                            <sp:Basic256 />
+                          </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                          <wsp:Policy>
+                            <sp:Strict />
+                          </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                      </wsp:Policy>
+                    </sp:TransportBinding>
+                    <sp:SignedSupportingTokens>
+                      <wsp:Policy>
+                        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                          <wsp:Policy>
+                            <sp:WssUsernameToken10 />
+                          </wsp:Policy>
+                        </sp:UsernameToken>
+                      </wsp:Policy>
+                    </sp:SignedSupportingTokens>
+                    <sp:Wss11>
+                      <wsp:Policy />
+                    </sp:Wss11>
+                    <sp:Trust10>
+                      <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                      </wsp:Policy>
+                    </sp:Trust10>
+                  </wsp:Policy>
+                </sp:BootstrapPolicy>
+              </wsp:Policy>
+            </sp:SecureConversationToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ISensors_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:BootstrapPolicy>
+                  <wsp:Policy>
+                    <sp:SignedParts>
+                      <sp:Body />
+                      <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    </sp:SignedParts>
+                    <sp:EncryptedParts>
+                      <sp:Body />
+                    </sp:EncryptedParts>
+                    <sp:TransportBinding>
+                      <wsp:Policy>
+                        <sp:TransportToken>
+                          <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false" />
+                          </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                          <wsp:Policy>
+                            <sp:Basic256 />
+                          </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                          <wsp:Policy>
+                            <sp:Strict />
+                          </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                      </wsp:Policy>
+                    </sp:TransportBinding>
+                    <sp:SignedSupportingTokens>
+                      <wsp:Policy>
+                        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                          <wsp:Policy>
+                            <sp:WssUsernameToken10 />
+                          </wsp:Policy>
+                        </sp:UsernameToken>
+                      </wsp:Policy>
+                    </sp:SignedSupportingTokens>
+                    <sp:Wss11>
+                      <wsp:Policy />
+                    </sp:Wss11>
+                    <sp:Trust10>
+                      <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                      </wsp:Policy>
+                    </sp:Trust10>
+                  </wsp:Policy>
+                </sp:BootstrapPolicy>
+              </wsp:Policy>
+            </sp:SecureConversationToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://qmr.guttman.cuny.edu/qmr/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://qmr.guttman.cuny.edu/qmr/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://qmr.guttman.cuny.edu/qmr/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/QMRService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRooms_GetRoomByRoomID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomByRoomID" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_GetRoomByRoomID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomByRoomIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_GetRoomBySensorID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomBySensorID" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_GetRoomBySensorID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomBySensorIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_GetListRooms_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListRooms" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_GetListRooms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_AddRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoom" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_AddRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_ReserveRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReserveRoom" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_ReserveRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReserveRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IRooms_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISensors_AddSensor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSensor" />
+  </wsdl:message>
+  <wsdl:message name="ISensors_AddSensor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISensors_ReserveRoomBySensor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReserveRoomBySensor" />
+  </wsdl:message>
+  <wsdl:message name="ISensors_ReserveRoomBySensor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReserveRoomBySensorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRooms">
+    <wsdl:operation name="GetRoomByRoomID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/GetRoomByRoomID" message="tns:IRooms_GetRoomByRoomID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/GetRoomByRoomIDResponse" message="tns:IRooms_GetRoomByRoomID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomBySensorID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/GetRoomBySensorID" message="tns:IRooms_GetRoomBySensorID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/GetRoomBySensorIDResponse" message="tns:IRooms_GetRoomBySensorID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListRooms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/GetListRooms" message="tns:IRooms_GetListRooms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/GetListRoomsResponse" message="tns:IRooms_GetListRooms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/AddRoom" message="tns:IRooms_AddRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/AddRoomResponse" message="tns:IRooms_AddRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/ReserveRoom" message="tns:IRooms_ReserveRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/ReserveRoomResponse" message="tns:IRooms_ReserveRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRooms/Login" message="tns:IRooms_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRooms/LoginResponse" message="tns:IRooms_Login_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISensors">
+    <wsdl:operation name="AddSensor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensors/AddSensor" message="tns:ISensors_AddSensor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensors/AddSensorResponse" message="tns:ISensors_AddSensor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoomBySensor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensors/ReserveRoomBySensor" message="tns:ISensors_ReserveRoomBySensor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensors/ReserveRoomBySensorResponse" message="tns:ISensors_ReserveRoomBySensor_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IRooms" type="tns:IRooms">
+    <wsp:PolicyReference URI="#WSHttpBinding_IRooms_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRoomByRoomID">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/GetRoomByRoomID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomBySensorID">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/GetRoomBySensorID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListRooms">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/GetListRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoom">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/AddRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoom">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/ReserveRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/IRooms/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSHttpBinding_ISensors" type="tns:ISensors">
+    <wsp:PolicyReference URI="#WSHttpBinding_ISensors_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddSensor">
+      <soap12:operation soapAction="http://tempuri.org/ISensors/AddSensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveRoomBySensor">
+      <soap12:operation soapAction="http://tempuri.org/ISensors/ReserveRoomBySensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="WSHttpBinding_IRooms" binding="tns:WSHttpBinding_IRooms">
+      <soap12:address location="https://qmr.guttman.cuny.edu/qmr/Service.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://qmr.guttman.cuny.edu/qmr/Service.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="WSHttpBinding_ISensors" binding="tns:WSHttpBinding_ISensors">
+      <soap12:address location="https://qmr.guttman.cuny.edu/qmr/Service.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://qmr.guttman.cuny.edu/qmr/Service.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
